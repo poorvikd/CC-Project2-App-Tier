@@ -4,6 +4,7 @@ import boto3
 from model.face_recognition import  face_match
 import json
 import os
+import time
 
 SQS_REQUEST = 'https://sqs.us-east-1.amazonaws.com/474668424004/1229658367-req-queue'
 SQS_RESPONSE = 'https://sqs.us-east-1.amazonaws.com/474668424004/1229658367-resp-queue'
@@ -75,4 +76,6 @@ def read_message_from_sqs():
 
 if __name__ == '__main__':
     while True:
+        print("Waiting for message...")
         read_message_from_sqs()
+        time.sleep(5)
